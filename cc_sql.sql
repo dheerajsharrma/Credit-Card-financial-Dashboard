@@ -55,19 +55,97 @@ SHOW GLOBAL VARIABLES LIKE 'local_infile';
 
 
 
-LOAD DATA LOCAL INFILE 'D:\\DK\\CODE FILES\\Power BI Project\\Credit Card Report\\cc_add.csv'
+LOAD DATA LOCAL INFILE 'D:\\DK\\PowerBI\\Credit Card Report\\credit_card.csv'
 INTO TABLE cc_detail
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
+IGNORE 1 ROWS
+(
+  Client_Num,
+  Card_Category,
+  Annual_Fees,
+  Activation_30_Days,
+  Customer_Acq_Cost,
+  @week_start_date,
+  Week_Num,
+  Qtr,
+  current_year,
+  Credit_Limit,
+  Total_Revolving_Bal,
+  Total_Trans_Amt,
+  Total_Trans_Ct,
+  Avg_Utilization_Ratio,
+  Use_Chip,
+  Exp_Type,
+  Interest_Earned,
+  Delinquent_Acc
+)
+SET Week_Start_Date = STR_TO_DATE(@week_start_date, '%d-%m-%Y');
 
 
-LOAD DATA LOCAL INFILE 'D:\\DK\\CODE FILES\\Power BI Project\\Credit Card Report\\cust_add.csv'
+
+
+
+LOAD DATA LOCAL INFILE 'D:\\DK\\PowerBI\\Credit Card Report\\customer.csv'
 INTO TABLE cust_detail
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+
+
+
+
+LOAD DATA LOCAL INFILE 'D:\\DK\\PowerBI\\Credit Card Report\\cc_add.csv'
+INTO TABLE cc_detail
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(
+  Client_Num,
+  Card_Category,
+  Annual_Fees,
+  Activation_30_Days,
+  Customer_Acq_Cost,
+  @week_start_date,
+  Week_Num,
+  Qtr,
+  current_year,
+  Credit_Limit,
+  Total_Revolving_Bal,
+  Total_Trans_Amt,
+  Total_Trans_Ct,
+  Avg_Utilization_Ratio,
+  Use_Chip,
+  Exp_Type,
+  Interest_Earned,
+  Delinquent_Acc
+)
+SET Week_Start_Date = STR_TO_DATE(@week_start_date, '%d-%m-%Y');
+
+
+
+
+
+LOAD DATA LOCAL INFILE 'D:\\DK\\PowerBI\\Credit Card Report\\cust_add.csv'
+INTO TABLE cust_detail
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+
+
+-- SET SQL_SAFE_UPDATES = 0;
+
+-- DELETE FROM cc_detail;
+-- DELETE FROM cust_detail;
+
+-- SET SQL_SAFE_UPDATES = 1;
+
 
 
